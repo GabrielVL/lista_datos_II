@@ -11,7 +11,7 @@
 class List {
 
 private:
-    Node head;
+    Node *head;
 
 public:
     void add(int data);
