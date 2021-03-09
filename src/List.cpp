@@ -3,3 +3,6 @@
 //
 
 #include "List.h"
+void add(int data) {
+
+}

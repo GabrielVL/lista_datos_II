@@ -13,6 +13,9 @@ class List {
 private:
     Node head;
 
+public:
+    void add(int data);
+
 };
 
 
