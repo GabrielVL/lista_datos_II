@@ -13,9 +13,7 @@ private:
     int *next;
 
 public:
-    Node(int data, int *next);
-
-    void SetNode(int data, int *next);
+    Node(int data);
 
 };
 

@@ -4,8 +4,5 @@
 
 #include "Node.h"
 
-Node::Node(int data, int *next) {
-
-    SetNode(data, next);
-
-}
+Node::Node(int data)
+: data(data) {}
