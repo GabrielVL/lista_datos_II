@@ -16,6 +16,8 @@ private:
 public:
     void add(int data);
 
+    void print();
+
     Node *getHead() const;
 
     void setHead(Node *head);

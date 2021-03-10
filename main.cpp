@@ -4,9 +4,8 @@
 int main() {
     List *list = new List;
     list->add(3);
-    std::cout << list->getHead() << std::endl;
+    list->print();
     list->add(4);
-    std::cout << list->getHead() << std::endl;
-    std::cout << list->getHead()->getNext() << std::endl;
+    list->print();
     return 0;
 }
