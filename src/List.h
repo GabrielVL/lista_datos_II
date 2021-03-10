@@ -11,10 +11,14 @@
 class List {
 
 private:
-    Node *head;
+    Node *head = nullptr;
 
 public:
     void add(int data);
+
+    Node *getHead() const;
+
+    void setHead(Node *head);
 
 };
 

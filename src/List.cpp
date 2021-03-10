@@ -3,6 +3,20 @@
 //
 
 #include "List.h"
-void add(int data) {
+void List::add(int data) {
+    Node *newNode = new Node(data);
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        newNode->setNext(getHead());
+        setHead(newNode);
+    }
+}
 
+Node *List::getHead() const {
+    return head;
+}
+
+void List::setHead(Node *head) {
+    List::head = head;
 }

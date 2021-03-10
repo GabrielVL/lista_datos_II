@@ -10,10 +10,18 @@ class Node {
 
 private:
     int data;
-    int *next;
-
+    Node *next;
 public:
     Node(int data);
+
+    int getData() const;
+
+    void setData(int data);
+
+    Node *getNext() const;
+
+    void setNext(Node *next);
+
 
 };
 
