@@ -12,6 +12,10 @@ class Collector {
 
 private:
     List recycle_bin;
+public:
+    const List &getRecycleBin() const;
+
+    void setRecycleBin(const List &recycleBin);
 
 };
 
