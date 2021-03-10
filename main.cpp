@@ -4,8 +4,8 @@
 int main() {
     List *list = new List;
     list->add(3);
-    list->print();
+    list->print(0);
     list->add(4);
-    list->print();
+    list->print(1);
     return 0;
 }

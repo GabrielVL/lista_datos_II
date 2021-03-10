@@ -14,16 +14,20 @@ void List::add(int data) {
     }
 }
 
-void List::print() {
+void List::print(bool is_memory) {
 
-    Node *current = head;
+    Node *current_node = head;
     std::cout << "[";
-    while (current != nullptr) {
-        std::cout << current->getData();
-        if (current->getNext() != nullptr) {
+    while (current_node != nullptr) {
+        if (is_memory) {
+            std::cout << current_node;
+        } else {
+            std::cout << current_node->getData();
+        }
+        if (current_node->getNext() != nullptr) {
             std::cout << ", ";
         }
-        current = current->getNext();
+        current_node = current_node->getNext();
     }
     std::cout << "]" << std::endl;
 

@@ -16,7 +16,7 @@ private:
 public:
     void add(int data);
 
-    void print();
+    void print(bool is_memory);
 
     Node *getHead() const;
 
