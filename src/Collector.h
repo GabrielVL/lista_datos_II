@@ -13,6 +13,9 @@ class Collector {
 private:
     List recycle_bin;
 public:
+
+    void addBin(Node mem_block);
+
     const List &getRecycleBin() const;
 
     void setRecycleBin(const List &recycleBin);
