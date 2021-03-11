@@ -14,7 +14,7 @@ private:
     List recycle_bin;
 public:
 
-    void addBin(Node mem_block);
+    void addBin(void *mem_block);
 
     const List &getRecycleBin() const;
 

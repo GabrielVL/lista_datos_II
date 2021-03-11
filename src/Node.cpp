@@ -6,18 +6,19 @@
 #include "Node.h"
 #include "Collector.h"
 
-Node::Node(int data)
-: data(data) {}
+Node::Node(int data) : data(data) {}
 
-void* operator new(size_t size, List recycle_bin) {
+Node::Node(void *mem) : mem(mem) {}
+
+void* operator new(size_t size, Collector recycle_bin) {
 
 
 
 }
 
-void operator delete(void* recycle, List recycle_bin) {
+void operator delete(void* recycle, Collector recycle_bin) {
 
-
+    recycle_bin.addBin(recycle);
 
 }
 

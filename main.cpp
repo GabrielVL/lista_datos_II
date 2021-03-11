@@ -1,8 +1,10 @@
 #include <iostream>
 #include "src/List.h"
+#include "src/Collector.h"
 
 int main() {
     bool memory = true;
+    Collector *collector = new Collector;
     List *list = new List;
     list->addFirst(3);
     list->print(memory);

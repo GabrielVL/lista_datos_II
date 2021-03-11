@@ -14,6 +14,16 @@ void List::addFirst(int data) {
     }
 }
 
+void List::addFirst(void* mem) {
+    Node *newNode = new Node(mem);
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        newNode->setNext(getHead());
+        setHead(newNode);
+    }
+}
+
 void List::removeFirst() {
     if (head != nullptr) {
         Node *node = head;

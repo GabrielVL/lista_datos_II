@@ -10,9 +10,12 @@ class Node {
 
 private:
     int data;
+    void *mem;
     Node *next;
 public:
     Node(int data);
+
+    Node(void *mem);
 
     int getData() const;
 

@@ -4,10 +4,9 @@
 
 #include "Collector.h"
 
-void Collector::addBin(Node mem_block) {
+void Collector::addBin(void* mem_block) {
 
-    recycle_bin.addFirst(mem_block.getData());
-    recycle_bin.setHead(&mem_block);
+    recycle_bin.addFirst(mem_block);
 
 }
 
