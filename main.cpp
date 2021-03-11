@@ -2,10 +2,15 @@
 #include "src/List.h"
 
 int main() {
+    bool memory = true;
     List *list = new List;
-    list->add(3);
-    list->print(0);
-    list->add(4);
-    list->print(1);
+    list->addFirst(3);
+    list->print(memory);
+    list->addFirst(4);
+    list->print(memory);
+    list->removeFirst();
+    list->print(memory);
+    list->addFirst(5);
+    list->print(memory);
     return 0;
 }

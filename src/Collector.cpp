@@ -6,7 +6,7 @@
 
 void Collector::addBin(Node mem_block) {
 
-    recycle_bin.add(mem_block.getData());
+    recycle_bin.addFirst(mem_block.getData());
     recycle_bin.setHead(&mem_block);
 
 }

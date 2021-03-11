@@ -4,13 +4,21 @@
 
 #include <iostream>
 #include "List.h"
-void List::add(int data) {
+void List::addFirst(int data) {
     Node *newNode = new Node(data);
     if (head == nullptr) {
         head = newNode;
     } else {
         newNode->setNext(getHead());
         setHead(newNode);
+    }
+}
+
+void List::removeFirst() {
+    if (head != nullptr) {
+        Node *node = head;
+        setHead(head->getNext());
+        delete node;
     }
 }
 

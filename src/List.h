@@ -14,7 +14,9 @@ private:
     Node *head = nullptr;
 
 public:
-    void add(int data);
+    void addFirst(int data);
+
+    void removeFirst();
 
     void print(bool is_memory);
 
