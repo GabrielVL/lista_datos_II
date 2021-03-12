@@ -14,6 +14,9 @@ void *Node::operator new(size_t size) {
 
 void Node::operator delete(void *) {
 
+    Collector *collector = Collector::GetInstance();
+    if (collector->getHead() == nullptr)
+
 }
 
 int Node::getData() const {

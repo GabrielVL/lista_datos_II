@@ -15,19 +15,19 @@ Collector *Collector::GetInstance() {
 
 void Collector::addFirst(void* mem) {
     auto *newNode = new Node_Collector(mem);
-    if (head.getMem() == nullptr) {
+    if (head->getMem() == nullptr) {
         setHead(newNode);
     } else {
-        newNode->setNext(&head);
+        newNode->setNext(head);
         setHead(newNode);
     }
 }
 
 Node_Collector *Collector::removeFirst() {
-    if (head.getMem() != nullptr) {
-        Node_Collector node = head;
-        setHead(head.getNext());
-        return &node;
+    if (head->getMem() != nullptr) {
+        Node_Collector *node = head;
+        setHead(head->getNext());
+        return node;
     } else {
         return nullptr;
     }
@@ -48,10 +48,12 @@ void Collector::print() {
 
 }
 
-const Node_Collector &Collector::getHead() const {
+Node_Collector *Collector::getHead() const {
     return head;
 }
 
-void Collector::setHead(const Node_Collector &head) {
+void Collector::setHead(Node_Collector *head) {
     Collector::head = head;
 }
+
+

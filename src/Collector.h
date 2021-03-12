@@ -11,7 +11,7 @@
 class Collector {
 
 private:
-    Node_Collector head = nullptr;
+    Node_Collector *head = nullptr;
 
 protected:
 
@@ -27,9 +27,9 @@ public:
 
     void operator=(const Collector &) = delete;
 
-    const Node_Collector &getHead() const;
+    Node_Collector *getHead() const;
 
-    void setHead(const Node_Collector &head);
+    void setHead(Node_Collector *head);
 
     static Collector *GetInstance();
 
