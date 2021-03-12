@@ -6,17 +6,23 @@
 #include "Node.h"
 #include "Collector.h"
 
+Node::Node() = default;
+
 Node::Node(int data) : data(data) {}
 
 void *Node::operator new(size_t size) {
-    return nullptr;
+    Collector *collector = Collector::GetInstance();
+    if (collector->getHead() == nullptr) {
+        void* *mem_node = reinterpret_cast<void **>(::new Node());
+        return mem_node;
+    } else {
+        return collector->removeFirst();
+    }
 }
 
-void Node::operator delete(void *) {
-
+void Node::operator delete(void *save_mem) {
     Collector *collector = Collector::GetInstance();
-    if (collector->getHead() == nullptr)
-
+    collector->addFirst(save_mem);
 }
 
 int Node::getData() const {
@@ -34,4 +40,3 @@ Node *Node::getNext() const {
 void Node::setNext(Node *next) {
     Node::next = next;
 }
-

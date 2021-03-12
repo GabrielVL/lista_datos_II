@@ -5,17 +5,18 @@
 #include <iostream>
 #include "Collector.h"
 
+Collector *Collector::instance = nullptr;
 
 Collector *Collector::GetInstance() {
     if(instance == nullptr){
-        instance = new Collector();
+        instance = new Collector;
     }
     return instance;
 }
 
 void Collector::addFirst(void* mem) {
     auto *newNode = new Node_Collector(mem);
-    if (head->getMem() == nullptr) {
+    if (head == nullptr) {
         setHead(newNode);
     } else {
         newNode->setNext(head);
@@ -23,11 +24,11 @@ void Collector::addFirst(void* mem) {
     }
 }
 
-Node_Collector *Collector::removeFirst() {
+void *Collector::removeFirst() {
     if (head->getMem() != nullptr) {
         Node_Collector *node = head;
         setHead(head->getNext());
-        return node;
+        return node->getMem();
     } else {
         return nullptr;
     }
@@ -35,14 +36,14 @@ Node_Collector *Collector::removeFirst() {
 
 void Collector::print() {
 
-    Node_Collector current_node = head;
-    std::cout << "[";
-    while (current_node.getMem() != nullptr) {
-        std::cout << current_node.getMem();
-        if (current_node.getNext() != nullptr) {
+    Node_Collector *current_node = Collector::head;
+    std::cout << "Collector: [";
+    while (current_node != nullptr) {
+        std::cout << current_node->getMem();
+        if (current_node->getNext() != nullptr) {
             std::cout << ", ";
         }
-        current_node = current_node.getNext();
+        current_node = current_node->getNext();
     }
     std::cout << "]" << std::endl;
 

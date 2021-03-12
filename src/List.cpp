@@ -25,7 +25,7 @@ void List::removeFirst() {
 void List::print(bool is_memory) {
 
     Node *current_node = head;
-    std::cout << "[";
+    std::cout << "List: [";
     while (current_node != nullptr) {
         if (is_memory) {
             std::cout << current_node;

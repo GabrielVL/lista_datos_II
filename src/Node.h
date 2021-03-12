@@ -9,11 +9,15 @@
 class Node {
 
 private:
-    int data;
+    int data{};
+
+private:
     Node *next{};
 
 public:
-    Node(int data);
+    Node();
+
+    explicit Node(int data);
 
     void* operator new(size_t size);
 

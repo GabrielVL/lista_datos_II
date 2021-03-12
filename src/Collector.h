@@ -27,15 +27,15 @@ public:
 
     void operator=(const Collector &) = delete;
 
+    static Collector *GetInstance();
+
     Node_Collector *getHead() const;
 
     void setHead(Node_Collector *head);
 
-    static Collector *GetInstance();
-
     void addFirst(void *value);
 
-    Node_Collector * removeFirst();
+    void * removeFirst();
 
     void print();
 
