@@ -10,15 +10,11 @@ Node::Node(int data) : data(data) {}
 
 Node::Node(void *mem) : mem(mem) {}
 
-void* operator new(size_t size, Collector recycle_bin) {
-
-
-
+void *Node::operator new(size_t size) {
+    return nullptr;
 }
 
-void operator delete(void* recycle, Collector recycle_bin) {
-
-    recycle_bin.addBin(recycle);
+void Node::operator delete(void *) {
 
 }
 
@@ -37,3 +33,4 @@ Node *Node::getNext() const {
 void Node::setNext(Node *next) {
     Node::next = next;
 }
+

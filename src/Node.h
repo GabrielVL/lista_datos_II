@@ -17,6 +17,10 @@ public:
 
     Node(void *mem);
 
+    void* operator new(size_t size);
+
+    void operator delete(void*);
+
     int getData() const;
 
     void setData(int data);
