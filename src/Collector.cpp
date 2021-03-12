@@ -37,9 +37,9 @@ void *Collector::removeFirst() {
 void Collector::print() {
 
     Node_Collector *current_node = Collector::head;
-    std::cout << "Collector: [";
+    std::cout << "Estado del collector: [";
     while (current_node != nullptr) {
-        std::cout << current_node->getMem();
+        std::cout << "0x" << std::uppercase << std::hex << uintptr_t(current_node->getMem());
         if (current_node->getNext() != nullptr) {
             std::cout << ", ";
         }
