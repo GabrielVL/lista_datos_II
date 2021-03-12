@@ -10,7 +10,7 @@ class Node {
 
 private:
     int data;
-    void *mem;
+
     Node *next;
 public:
     Node(int data);
