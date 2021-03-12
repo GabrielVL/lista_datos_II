@@ -10,12 +10,10 @@ class Node {
 
 private:
     int data;
+    Node *next{};
 
-    Node *next;
 public:
     Node(int data);
-
-    Node(void *mem);
 
     void* operator new(size_t size);
 

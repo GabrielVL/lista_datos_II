@@ -10,7 +10,7 @@ class Node_Collector {
 
 private:
     void *mem;
-    Node_Collector *next;
+    Node_Collector *next{};
 
 public:
     Node_Collector(void *mem);

@@ -16,8 +16,6 @@ private:
 public:
     void addFirst(int data);
 
-    void addFirst(void *data);
-
     void removeFirst();
 
     void print(bool is_memory);

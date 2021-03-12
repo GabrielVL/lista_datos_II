@@ -8,8 +8,6 @@
 
 Node::Node(int data) : data(data) {}
 
-Node::Node(void *mem) : mem(mem) {}
-
 void *Node::operator new(size_t size) {
     return nullptr;
 }

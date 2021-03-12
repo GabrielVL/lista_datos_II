@@ -6,19 +6,38 @@
 #define LISTA_DATOS_II_COLLECTOR_H
 
 
-#include "List.h"
+#include "Node_Collector.h"
 
 class Collector {
 
 private:
-    List recycle_bin;
+    Node_Collector head = nullptr;
+
+protected:
+
+    Collector() {
+        head = nullptr;
+    }
+
+    static Collector* instance;
+
+
 public:
+    Collector(Collector &other) = delete;
 
-    void addBin(void *mem_block);
+    void operator=(const Collector &) = delete;
 
-    const List &getRecycleBin() const;
+    const Node_Collector &getHead() const;
 
-    void setRecycleBin(const List &recycleBin);
+    void setHead(const Node_Collector &head);
+
+    static Collector *GetInstance();
+
+    void addFirst(void *value);
+
+    Node_Collector * removeFirst();
+
+    void print();
 
 };
 
