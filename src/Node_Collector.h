@@ -5,7 +5,7 @@
 #ifndef LISTA_DATOS_II_NODE_COLLECTOR_H
 #define LISTA_DATOS_II_NODE_COLLECTOR_H
 
-
+/// Nodos del Collector que almacenan bloques de memoria
 class Node_Collector {
 
 private:

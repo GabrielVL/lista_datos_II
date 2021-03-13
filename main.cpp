@@ -14,5 +14,11 @@ int main() {
 
     list->addFirst(3);
 
+    list->addFirst(4);
+
+    list->removeFirst();
+
+    list->addFirst(5);
+
     return 0;
 }

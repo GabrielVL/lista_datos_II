@@ -8,6 +8,7 @@
 
 #include "Node.h"
 
+/// Ordena, almacena y organiza nodos uno detrás de otro
 class List {
 
 private:

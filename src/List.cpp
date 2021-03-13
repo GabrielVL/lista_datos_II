@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include "List.h"
+
+/// Añade un nodo al principio de la lista
+/// \param data Nodo con int a añadir
 void List::addFirst(int data) {
     Node *newNode = new Node(data);
     if (head == nullptr) {
@@ -19,6 +22,7 @@ void List::addFirst(int data) {
     std::cout << std::endl;
 }
 
+/// Borra un nodo al principio de la lista
 void List::removeFirst() {
     if (head != nullptr) {
         Node *node = head;
@@ -32,6 +36,9 @@ void List::removeFirst() {
     }
 }
 
+/// Imprime el contenido en la lista
+/// \param is_memory Imprime los bloques de memoria de los nodos si es verdadero, el int que contiene el nodo si es
+/// falso
 void List::print(bool is_memory) {
 
     Node *current_node = head;

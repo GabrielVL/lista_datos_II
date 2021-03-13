@@ -1,0 +1,131 @@
+\hypertarget{classCollector}{}\doxysection{Collector Class Reference}
+\label{classCollector}\index{Collector@{Collector}}
+
+
+Lista que guarda bloques de memoria eliminados con la habilidad de reciclarlos. Utiliza Singleton.  
+
+
+
+
+{\ttfamily \#include $<$Collector.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCollector_a3faa65fc9ab040db922f1fb610c38eee}\label{classCollector_a3faa65fc9ab040db922f1fb610c38eee}} 
+\mbox{\hyperlink{classNode__Collector}{Node\+\_\+\+Collector}} $\ast$ {\bfseries get\+Head} () const
+\item 
+\mbox{\Hypertarget{classCollector_af6491227921ea7455ccd968e43ac0d6e}\label{classCollector_af6491227921ea7455ccd968e43ac0d6e}} 
+void {\bfseries set\+Head} (\mbox{\hyperlink{classNode__Collector}{Node\+\_\+\+Collector}} $\ast$head)
+\item 
+void \mbox{\hyperlink{classCollector_a6298b266608b75d3dd7cfb5ad02ea883}{add\+First}} (void $\ast$value)
+\item 
+void $\ast$ \mbox{\hyperlink{classCollector_af6b0c268c1af0c0fc459ca3ce9a85df2}{remove\+First}} ()
+\item 
+\mbox{\Hypertarget{classCollector_abe2163eb7ce55930317df5bfd58faaae}\label{classCollector_abe2163eb7ce55930317df5bfd58faaae}} 
+void \mbox{\hyperlink{classCollector_abe2163eb7ce55930317df5bfd58faaae}{print}} ()
+\begin{DoxyCompactList}\small\item\em Imprime el contenido en la lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classCollector}{Collector}} $\ast$ \mbox{\hyperlink{classCollector_aace8c19a94c92944c4095045cda32975}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCollector_a7ad96eef073ea15388425c0faed7f68b}\label{classCollector_a7ad96eef073ea15388425c0faed7f68b}} 
+static \mbox{\hyperlink{classCollector}{Collector}} $\ast$ {\bfseries instance} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lista que guarda bloques de memoria eliminados con la habilidad de reciclarlos. Utiliza Singleton. 
+
+Definition at line 12 of file Collector.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCollector_a6298b266608b75d3dd7cfb5ad02ea883}\label{classCollector_a6298b266608b75d3dd7cfb5ad02ea883}} 
+\index{Collector@{Collector}!addFirst@{addFirst}}
+\index{addFirst@{addFirst}!Collector@{Collector}}
+\doxysubsubsection{\texorpdfstring{addFirst()}{addFirst()}}
+{\footnotesize\ttfamily void Collector\+::add\+First (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem }\end{DoxyParamCaption})}
+
+Añade un nodo al principio del collector 
+\begin{DoxyParams}{Parameters}
+{\em mem} & Nodo con bloque de memoria a añadir \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file Collector.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                   \{}
+\DoxyCodeLine{22     \textcolor{keyword}{auto} *newNode = \textcolor{keyword}{new} \mbox{\hyperlink{classNode__Collector}{Node\_Collector}}(mem);}
+\DoxyCodeLine{23     \textcolor{keywordflow}{if} (head == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{24         setHead(newNode);}
+\DoxyCodeLine{25     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{26         newNode-\/>setNext(head);}
+\DoxyCodeLine{27         setHead(newNode);}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCollector_aace8c19a94c92944c4095045cda32975}\label{classCollector_aace8c19a94c92944c4095045cda32975}} 
+\index{Collector@{Collector}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Collector@{Collector}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCollector}{Collector}} $\ast$ Collector\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Retorna el atributo instance que almacena. Si es nulo, instancia el atributo \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 12 of file Collector.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12                                   \{}
+\DoxyCodeLine{13     \textcolor{keywordflow}{if}(instance == \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{14         instance = \textcolor{keyword}{new} \mbox{\hyperlink{classCollector}{Collector}};}
+\DoxyCodeLine{15     \}}
+\DoxyCodeLine{16     \textcolor{keywordflow}{return} instance;}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCollector_af6b0c268c1af0c0fc459ca3ce9a85df2}\label{classCollector_af6b0c268c1af0c0fc459ca3ce9a85df2}} 
+\index{Collector@{Collector}!removeFirst@{removeFirst}}
+\index{removeFirst@{removeFirst}!Collector@{Collector}}
+\doxysubsubsection{\texorpdfstring{removeFirst()}{removeFirst()}}
+{\footnotesize\ttfamily void $\ast$ Collector\+::remove\+First (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Saca un nodo al principio de la lista para reciclarlo \begin{DoxyReturn}{Returns}
+Nodo a reciclar 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file Collector.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                              \{}
+\DoxyCodeLine{34     \textcolor{keywordflow}{if} (head-\/>getMem() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{35         \mbox{\hyperlink{classNode__Collector}{Node\_Collector}} *node = head;}
+\DoxyCodeLine{36         setHead(head-\/>getNext());}
+\DoxyCodeLine{37         \textcolor{keywordflow}{return} node-\/>getMem();}
+\DoxyCodeLine{38     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{39         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Collector.\+h\item 
+Collector.\+cpp\end{DoxyCompactItemize}

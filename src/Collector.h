@@ -8,6 +8,7 @@
 
 #include "Node_Collector.h"
 
+/// Lista que guarda bloques de memoria eliminados con la habilidad de reciclarlos. Utiliza Singleton
 class Collector {
 
 private:
@@ -23,9 +24,9 @@ protected:
 
 
 public:
-    Collector(Collector &other) = delete;
-
-    void operator=(const Collector &) = delete;
+//    Collector(Collector &other) = delete;
+//
+//    void operator=(const Collector &) = delete;
 
     static Collector *GetInstance();
 

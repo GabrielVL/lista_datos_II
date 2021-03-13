@@ -1,0 +1,119 @@
+\hypertarget{classList}{}\doxysection{List Class Reference}
+\label{classList}\index{List@{List}}
+
+
+Ordena, almacena y organiza nodos uno detrás de otro.  
+
+
+
+
+{\ttfamily \#include $<$List.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classList_aebd3e5a6d0804124074fd243f3c09b42}{add\+First}} (int data)
+\item 
+\mbox{\Hypertarget{classList_a1f741c7b42e97f7a2759729700399561}\label{classList_a1f741c7b42e97f7a2759729700399561}} 
+void \mbox{\hyperlink{classList_a1f741c7b42e97f7a2759729700399561}{remove\+First}} ()
+\begin{DoxyCompactList}\small\item\em Borra un nodo al principio de la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classList_a5d4205811264babd1180e09a6e106c0e}{print}} (bool is\+\_\+memory)
+\item 
+\mbox{\Hypertarget{classList_a4db39bf6fbd85827de8ff1a6e3f0be21}\label{classList_a4db39bf6fbd85827de8ff1a6e3f0be21}} 
+\mbox{\hyperlink{classNode}{Node}} $\ast$ {\bfseries get\+Head} () const
+\item 
+\mbox{\Hypertarget{classList_ab9268d56508fee372f2d5cf8491e075a}\label{classList_ab9268d56508fee372f2d5cf8491e075a}} 
+void {\bfseries set\+Head} (\mbox{\hyperlink{classNode}{Node}} $\ast$head)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ordena, almacena y organiza nodos uno detrás de otro. 
+
+Definition at line 12 of file List.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classList_aebd3e5a6d0804124074fd243f3c09b42}\label{classList_aebd3e5a6d0804124074fd243f3c09b42}} 
+\index{List@{List}!addFirst@{addFirst}}
+\index{addFirst@{addFirst}!List@{List}}
+\doxysubsubsection{\texorpdfstring{addFirst()}{addFirst()}}
+{\footnotesize\ttfamily void List\+::add\+First (\begin{DoxyParamCaption}\item[{int}]{data }\end{DoxyParamCaption})}
+
+Añade un nodo al principio de la lista 
+\begin{DoxyParams}{Parameters}
+{\em data} & Nodo con int a añadir \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 10 of file List.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                             \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classNode}{Node}} *newNode = \textcolor{keyword}{new} \mbox{\hyperlink{classNode}{Node}}(data);}
+\DoxyCodeLine{12     \textcolor{keywordflow}{if} (head == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{13         head = newNode;}
+\DoxyCodeLine{14     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{15         newNode-\/>setNext(getHead());}
+\DoxyCodeLine{16         setHead(newNode);}
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18     std::cout << \textcolor{stringliteral}{"{}Se añade "{}} << data << \textcolor{stringliteral}{"{} a la lista "{}};}
+\DoxyCodeLine{19     std::cout << \textcolor{stringliteral}{"{}(0x"{}} << std::uppercase << std::hex << uintptr\_t(newNode)<< \textcolor{stringliteral}{"{} en memoria)"{}} << std::endl;}
+\DoxyCodeLine{20     \mbox{\hyperlink{classList_a5d4205811264babd1180e09a6e106c0e}{print}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{21     \mbox{\hyperlink{classList_a5d4205811264babd1180e09a6e106c0e}{print}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{22     std::cout << std::endl;}
+\DoxyCodeLine{23 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classList_a5d4205811264babd1180e09a6e106c0e}\label{classList_a5d4205811264babd1180e09a6e106c0e}} 
+\index{List@{List}!print@{print}}
+\index{print@{print}!List@{List}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void List\+::print (\begin{DoxyParamCaption}\item[{bool}]{is\+\_\+memory }\end{DoxyParamCaption})}
+
+Imprime el contenido en la lista 
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+memory} & Imprime los bloques de memoria de los nodos si es verdadero, el int que contiene el nodo si es falso \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file List.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42                                \{}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \mbox{\hyperlink{classNode}{Node}} *current\_node = head;}
+\DoxyCodeLine{45     std::cout << \textcolor{stringliteral}{"{}Estado de la lista "{}};}
+\DoxyCodeLine{46     \textcolor{keywordflow}{if} (is\_memory) \{}
+\DoxyCodeLine{47         std::cout << \textcolor{stringliteral}{"{}(en memoria)"{}};}
+\DoxyCodeLine{48     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{49         std::cout << \textcolor{stringliteral}{"{}(en int)"{}};}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51     std::cout << \textcolor{stringliteral}{"{}: ["{}};}
+\DoxyCodeLine{52     \textcolor{keywordflow}{while} (current\_node != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{53         \textcolor{keywordflow}{if} (is\_memory) \{}
+\DoxyCodeLine{54             std::cout << \textcolor{stringliteral}{"{}0x"{}} << std::uppercase << std::hex << uintptr\_t(current\_node);}
+\DoxyCodeLine{55         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{56             std::cout << current\_node-\/>getData();}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (current\_node-\/>getNext() != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{59             std::cout << \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61         current\_node = current\_node-\/>getNext();}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63     std::cout << \textcolor{stringliteral}{"{}]"{}} << std::endl;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+List.\+h\item 
+List.\+cpp\end{DoxyCompactItemize}

@@ -7,6 +7,8 @@
 
 Collector *Collector::instance = nullptr;
 
+/// Retorna el atributo instance que almacena. Si es nulo, instancia el atributo
+/// \return
 Collector *Collector::GetInstance() {
     if(instance == nullptr){
         instance = new Collector;
@@ -14,6 +16,8 @@ Collector *Collector::GetInstance() {
     return instance;
 }
 
+/// Añade un nodo al principio del collector
+/// \param mem Nodo con bloque de memoria a añadir
 void Collector::addFirst(void* mem) {
     auto *newNode = new Node_Collector(mem);
     if (head == nullptr) {
@@ -24,6 +28,8 @@ void Collector::addFirst(void* mem) {
     }
 }
 
+/// Saca un nodo al principio de la lista para reciclarlo
+/// \return Nodo a reciclar
 void *Collector::removeFirst() {
     if (head->getMem() != nullptr) {
         Node_Collector *node = head;
@@ -34,8 +40,8 @@ void *Collector::removeFirst() {
     }
 }
 
+/// Imprime el contenido en la lista
 void Collector::print() {
-
     Node_Collector *current_node = Collector::head;
     std::cout << "Estado del collector: [";
     while (current_node != nullptr) {
@@ -46,7 +52,6 @@ void Collector::print() {
         current_node = current_node->getNext();
     }
     std::cout << "]" << std::endl;
-
 }
 
 Node_Collector *Collector::getHead() const {

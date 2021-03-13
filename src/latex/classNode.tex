@@ -1,0 +1,116 @@
+\hypertarget{classNode}{}\doxysection{Node Class Reference}
+\label{classNode}\index{Node@{Node}}
+
+
+Objetos almacenados en una lista que guardan información.  
+
+
+
+
+{\ttfamily \#include $<$Node.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNode_a0d68253f48f4deb1e078ef6cf08a5bf4}\label{classNode_a0d68253f48f4deb1e078ef6cf08a5bf4}} 
+{\bfseries Node} (int data)
+\item 
+void $\ast$ \mbox{\hyperlink{classNode_ad93f4bb54e5f2759c8f903fd2d740267}{operator new}} (size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classNode_a183e85fb6a26d43b0e752a725f1c06f8}{operator delete}} (void $\ast$)
+\item 
+\mbox{\Hypertarget{classNode_a4bf12425ae4895ac3ec27c91fea8f646}\label{classNode_a4bf12425ae4895ac3ec27c91fea8f646}} 
+int {\bfseries get\+Data} () const
+\item 
+\mbox{\Hypertarget{classNode_a2da744e4e704b0e2684e0d7476cf8c26}\label{classNode_a2da744e4e704b0e2684e0d7476cf8c26}} 
+void {\bfseries set\+Data} (int data)
+\item 
+\mbox{\Hypertarget{classNode_a7207ac6b9786567730715f0d2a230764}\label{classNode_a7207ac6b9786567730715f0d2a230764}} 
+\mbox{\hyperlink{classNode}{Node}} $\ast$ {\bfseries get\+Next} () const
+\item 
+\mbox{\Hypertarget{classNode_ae0062432733265c491000494625c3a04}\label{classNode_ae0062432733265c491000494625c3a04}} 
+void {\bfseries set\+Next} (\mbox{\hyperlink{classNode}{Node}} $\ast$next)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Objetos almacenados en una lista que guardan información. 
+
+Definition at line 9 of file Node.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNode_a183e85fb6a26d43b0e752a725f1c06f8}\label{classNode_a183e85fb6a26d43b0e752a725f1c06f8}} 
+\index{Node@{Node}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{operator delete()}{operator delete()}}
+{\footnotesize\ttfamily void Node\+::operator delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{save\+\_\+mem }\end{DoxyParamCaption})}
+
+Overload al operador delete que guarda los espacios en memoria que se borran en \mbox{\hyperlink{classCollector}{Collector}} 
+\begin{DoxyParams}{Parameters}
+{\em save\+\_\+mem} & Memoria a reciclar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file Node.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                                          \{}
+\DoxyCodeLine{38     std::cout << \textcolor{stringliteral}{"{}Overload a operador delete"{}} << std::endl;}
+\DoxyCodeLine{39     std::cout << \textcolor{stringliteral}{"{}Se agrega 0x"{}} << std::uppercase << std::hex << uintptr\_t(save\_mem) << \textcolor{stringliteral}{"{} al Collector"{}} << std::endl;}
+\DoxyCodeLine{40     \mbox{\hyperlink{classCollector}{Collector}} *collector = \mbox{\hyperlink{classCollector_aace8c19a94c92944c4095045cda32975}{Collector::GetInstance}}();}
+\DoxyCodeLine{41     collector-\/>\mbox{\hyperlink{classCollector_a6298b266608b75d3dd7cfb5ad02ea883}{addFirst}}(save\_mem);}
+\DoxyCodeLine{42     collector-\/>\mbox{\hyperlink{classCollector_abe2163eb7ce55930317df5bfd58faaae}{print}}();}
+\DoxyCodeLine{43     std::cout << std::endl;}
+\DoxyCodeLine{44 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_ad93f4bb54e5f2759c8f903fd2d740267}\label{classNode_ad93f4bb54e5f2759c8f903fd2d740267}} 
+\index{Node@{Node}!operator new@{operator new}}
+\index{operator new@{operator new}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{operator new()}{operator new()}}
+{\footnotesize\ttfamily void $\ast$ Node\+::operator new (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Overload al operador new que recicla los espacios en memoria del \mbox{\hyperlink{classCollector}{Collector}} 
+\begin{DoxyParams}{Parameters}
+{\em size} & Tamaño del espacio en memoria \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Espacio reciclado, o nuevo si no hay en el \mbox{\hyperlink{classCollector}{Collector}} 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file Node.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                     \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{classCollector}{Collector}} *collector = \mbox{\hyperlink{classCollector_aace8c19a94c92944c4095045cda32975}{Collector::GetInstance}}();}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} *mem\_node = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{19     std::cout << \textcolor{stringliteral}{"{}Overload a operador new"{}} << std::endl;}
+\DoxyCodeLine{20     \textcolor{keywordflow}{if} (collector-\/>getHead() == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{21         mem\_node = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} *\textcolor{keyword}{>}(::new \mbox{\hyperlink{classNode}{Node}}());}
+\DoxyCodeLine{22         std::cout << \textcolor{stringliteral}{"{}Collector vacío. Se crea nuevo espacio en memoria 0x"{}} << std::uppercase << std::hex;}
+\DoxyCodeLine{23         std::cout << uintptr\_t(mem\_node) << std::endl;}
+\DoxyCodeLine{24         collector-\/>\mbox{\hyperlink{classCollector_abe2163eb7ce55930317df5bfd58faaae}{print}}();}
+\DoxyCodeLine{25     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{26         mem\_node = collector-\/>\mbox{\hyperlink{classCollector_af6b0c268c1af0c0fc459ca3ce9a85df2}{removeFirst}}();}
+\DoxyCodeLine{27         std::cout << \textcolor{stringliteral}{"{}Se reutiliza 0x"{}} << std::uppercase << std::hex << uintptr\_t(mem\_node);}
+\DoxyCodeLine{28         std::cout << \textcolor{stringliteral}{"{} con la ayuda de Collector"{}} << std::endl;}
+\DoxyCodeLine{29         collector-\/>\mbox{\hyperlink{classCollector_abe2163eb7ce55930317df5bfd58faaae}{print}}();}
+\DoxyCodeLine{30     \}}
+\DoxyCodeLine{31     std::cout << std::endl;}
+\DoxyCodeLine{32     \textcolor{keywordflow}{return} mem\_node;}
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Node.\+h\item 
+Node.\+cpp\end{DoxyCompactItemize}

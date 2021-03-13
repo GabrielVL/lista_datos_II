@@ -5,7 +5,7 @@
 #ifndef LISTA_DATOS_II_NODE_H
 #define LISTA_DATOS_II_NODE_H
 
-
+/// Objetos almacenados en una lista que guardan información
 class Node {
 
 private:

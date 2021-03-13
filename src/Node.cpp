@@ -10,6 +10,9 @@ Node::Node() = default;
 
 Node::Node(int data) : data(data) {}
 
+/// Overload al operador new que recicla los espacios en memoria del Collector
+/// \param size Tamaño del espacio en memoria
+/// \return Espacio reciclado, o nuevo si no hay en el Collector
 void *Node::operator new(size_t size) {
     Collector *collector = Collector::GetInstance();
     void *mem_node = nullptr;
@@ -29,6 +32,8 @@ void *Node::operator new(size_t size) {
     return mem_node;
 }
 
+/// Overload al operador delete que guarda los espacios en memoria que se borran en Collector
+/// \param save_mem Memoria a reciclar
 void Node::operator delete(void *save_mem) {
     std::cout << "Overload a operador delete" << std::endl;
     std::cout << "Se agrega 0x" << std::uppercase << std::hex << uintptr_t(save_mem) << " al Collector" << std::endl;
